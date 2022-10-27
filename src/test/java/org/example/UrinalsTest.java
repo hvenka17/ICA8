@@ -33,4 +33,10 @@ class UrinalsTest {
         System.out.println("====== Hariraj Venkatesan == TEST FOUR EXECUTED =======");
         Assertions.assertThrows(FileNotFoundException.class, () -> Urinals.openFile("INVALID"));
     }
+
+    @Test
+    void testOpenFileShouldThrowInvalidFileExceptionIfInputFileIsEmpty() {
+        System.out.println("====== Hariraj Venkatesan == TEST FOUR EXECUTED =======");
+        Assertions.assertThrows(InvalidFileException.class, () -> Urinals.openFile("EmptyFile.dat"));
+    }
 }
