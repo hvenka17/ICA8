@@ -36,7 +36,13 @@ class UrinalsTest {
 
     @Test
     void testOpenFileShouldThrowInvalidFileExceptionIfInputFileIsEmpty() {
-        System.out.println("====== Hariraj Venkatesan == TEST FOUR EXECUTED =======");
+        System.out.println("====== Hariraj Venkatesan == TEST FIVE EXECUTED =======");
         Assertions.assertThrows(InvalidFileException.class, () -> Urinals.openFile("EmptyFile.dat"));
+    }
+
+    @Test
+    void testOpenFileShouldThrowNumberFormatExceptionIfInputFileContainsInvalidNumbers() {
+        System.out.println("====== Hariraj Venkatesan == TEST SIX EXECUTED =======");
+        Assertions.assertThrows(NumberFormatException.class, () -> Urinals.openFile("InvalidNumberFormat.dat"));
     }
 }

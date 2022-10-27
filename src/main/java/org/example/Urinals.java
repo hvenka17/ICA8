@@ -30,8 +30,9 @@ public class Urinals {
             String inputLine = scanner.nextLine();
             if (inputLine.equals("-1"))
                 break;
-            else
-                lines.add(inputLine);
+            else if (!goodString(inputLine))
+                throw new NumberFormatException();
+            lines.add(inputLine);
         }
         scanner.close();
 
