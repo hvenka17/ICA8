@@ -10,6 +10,9 @@ import java.util.Set;
 
 public class Urinals {
     public static Boolean goodString(String s){
+        if (s.length() < 1)
+            return false;
+
         Set<String> validCharacters = new HashSet<>(Arrays.asList("0", "1"));
         for(int i=0;i<s.length();i++) {
             if (!validCharacters.contains(Character.toString(s.charAt(i))))
