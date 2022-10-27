@@ -28,5 +28,9 @@ class UrinalsTest {
         Assertions.assertFalse(Urinals.goodString("123"));
     }
 
-
+    @Test
+    void testOpenFileShouldThrowFileNotFoundExceptionIfInputFileDoesNotExist() {
+        System.out.println("====== Hariraj Venkatesan == TEST FOUR EXECUTED =======");
+        Assertions.assertThrows(FileNotFoundException.class, () -> Urinals.openFile("INVALID"));
+    }
 }
