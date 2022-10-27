@@ -7,6 +7,8 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 class UrinalsTest {
     @Test
     void testGoodStringShouldReturnTrueForValidString() {
@@ -19,4 +21,12 @@ class UrinalsTest {
         System.out.println("====== Hariraj Venkatesan == TEST TWO EXECUTED =======");
         Assertions.assertFalse(Urinals.goodString(""));
     }
+
+    @Test
+    void testGoodStringShouldReturnFalseWhenStringContainsInvalidCharacters() {
+        System.out.println("====== Hariraj Venkatesan == TEST THREE EXECUTED =======");
+        Assertions.assertFalse(Urinals.goodString("123"));
+    }
+
+
 }
