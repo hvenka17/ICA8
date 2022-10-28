@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Urinals {
     public static Boolean goodString(String s){
-        if (s.length() < 1)
+        if (s.length() < 1 || s.length() > 20)
             return false;
 
         Set<String> validCharacters = new HashSet<>(Arrays.asList("0", "1"));

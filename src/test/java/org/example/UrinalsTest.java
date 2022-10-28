@@ -29,6 +29,12 @@ class UrinalsTest {
     }
 
     @Test
+    void testGoodStringShouldReturnFalseWhenInputStringIsTooLong() {
+        System.out.println("====== Hariraj Venkatesan == TEST SEVEN EXECUTED =======");
+        Assertions.assertFalse(Urinals.goodString("123456789012345678901234567890"));
+    }
+
+    @Test
     void testOpenFileShouldThrowFileNotFoundExceptionIfInputFileDoesNotExist() {
         System.out.println("====== Hariraj Venkatesan == TEST FOUR EXECUTED =======");
         Assertions.assertThrows(FileNotFoundException.class, () -> Urinals.openFile("INVALID"));
