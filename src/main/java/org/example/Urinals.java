@@ -6,6 +6,7 @@ package org.example;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Urinals {
 
@@ -66,7 +67,18 @@ public class Urinals {
 
     public static void writeFile(List<Integer> values) throws IOException {
         String outName = "rule.txt";
+        File folder = new File(".");
+        List<String> fileNames = Arrays.stream(folder.listFiles()).map(file -> file.getName())
+                .filter(name -> name.matches("rule.*.txt")).sorted().collect(Collectors.toList());
+        if (!fileNames.isEmpty()) {
+            String highest = fileNames.get(fileNames.size() - 1);
+            String numberValue = highest.substring(4, highest.length() - 4);
+            if (numberValue.length() > 0)
+                outName = String.format("rule%d.txt", Integer.parseInt(numberValue) + 1);
+            else
+                outName = "rule1.txt";
 
+        }
         FileWriter file = new FileWriter(outName);
         for(Integer x:values) {
             file.write(x.toString()+"\n");

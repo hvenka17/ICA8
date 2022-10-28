@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
@@ -94,5 +95,17 @@ class UrinalsTest {
                 System.out.println("Exception when deleting files");
             }
         });
+    }
+
+    @Test
+    void testWriteFileMustCreateRuleFileWithCounterIfRuleFileExists() throws IOException {
+        System.out.println("====== Hariraj Venkatesan == TEST TEN EXECUTED =======");
+        deleteRuleFiles();
+        FileWriter outFile = new FileWriter("rule.txt");
+        outFile.close();
+        List<Integer> values = Arrays.asList(1,3);
+        File expectedFile = new File("rule1.txt");
+        Urinals.writeFile(values);
+        Assertions.assertTrue(expectedFile.exists());
     }
 }
