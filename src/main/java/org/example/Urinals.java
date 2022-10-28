@@ -9,6 +9,9 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Urinals {
+
+    private static final String urinalsFilePath = "Urinals.dat";
+
     public static Boolean goodString(String s){
         if (s.length() < 1 || s.length() > 20)
             return false;
@@ -40,5 +43,25 @@ public class Urinals {
             throw new InvalidFileException();
 
         return lines;
+    }
+
+    public static int countUrinals(String input) {
+        int available = input.length();
+        for(int i=0;i<input.length();i++) {
+            if (input.charAt(i) == '1') {
+                if ((i!=input.length()-1) && (input.charAt(i+1) == '1'))
+                    return -1;
+            }
+
+            if (input.charAt(i) == '1') {
+                if (i == 0 || i == input.length()-1)
+                    available -= 2;
+                else
+                    available -= 3;
+            }
+        }
+        if (available > 1)
+            available = (int)Math.ceil(available/2.0);
+        return available;
     }
 }

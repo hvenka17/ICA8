@@ -51,4 +51,15 @@ class UrinalsTest {
         System.out.println("====== Hariraj Venkatesan == TEST SIX EXECUTED =======");
         Assertions.assertThrows(NumberFormatException.class, () -> Urinals.openFile("InvalidNumberFormat.dat"));
     }
+
+    @Test
+    void testCountUrinalsShouldReturnCountOfAvailablePositions() {
+        System.out.println("====== Hariraj Venkatesan == TEST EIGHT EXECUTED =======");
+        Assertions.assertEquals(1, Urinals.countUrinals("10001"));
+        Assertions.assertEquals(0, Urinals.countUrinals("1001"));
+        Assertions.assertEquals(3, Urinals.countUrinals("00000"));
+        Assertions.assertEquals(2, Urinals.countUrinals("0000"));
+        Assertions.assertEquals(1, Urinals.countUrinals("01000"));
+        Assertions.assertEquals(-1, Urinals.countUrinals("011"));
+    }
 }
