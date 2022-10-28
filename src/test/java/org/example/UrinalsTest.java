@@ -7,7 +7,13 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class UrinalsTest {
     @Test
@@ -61,5 +67,32 @@ class UrinalsTest {
         Assertions.assertEquals(2, Urinals.countUrinals("0000"));
         Assertions.assertEquals(1, Urinals.countUrinals("01000"));
         Assertions.assertEquals(-1, Urinals.countUrinals("011"));
+    }
+
+    @Test
+    void testWriteFileCreatesOutputFile() throws IOException {
+        System.out.println("====== Hariraj Venkatesan == TEST NINE EXECUTED =======");
+        deleteRuleFiles();
+        File outFile = new File("rule.txt");
+        List<Integer> values = Arrays.asList(1,3);
+        Urinals.writeFile(values);
+        Assertions.assertTrue(outFile.exists());
+    }
+
+    private static List<String> ruleFilesList() {
+        File folder = new File(".");
+        return Arrays.stream(folder.listFiles()).map(file -> file.getName())
+                .filter(name -> name.matches("rule.*.txt")).sorted().collect(Collectors.toList());
+    }
+
+    private static void deleteRuleFiles() {
+        ruleFilesList().forEach(file -> {
+            File ruleFile = new File(file);
+            try {
+                Files.deleteIfExists(ruleFile.toPath());
+            } catch (IOException e) {
+                System.out.println("Exception when deleting files");
+            }
+        });
     }
 }

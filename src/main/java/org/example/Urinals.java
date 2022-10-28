@@ -4,8 +4,7 @@
 
 package org.example;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class Urinals {
@@ -63,5 +62,15 @@ public class Urinals {
         if (available > 1)
             available = (int)Math.ceil(available/2.0);
         return available;
+    }
+
+    public static void writeFile(List<Integer> values) throws IOException {
+        String outName = "rule.txt";
+
+        FileWriter file = new FileWriter(outName);
+        for(Integer x:values) {
+            file.write(x.toString()+"\n");
+        }
+        file.close();
     }
 }
