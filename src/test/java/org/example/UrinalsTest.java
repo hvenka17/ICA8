@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 class UrinalsTest {
     @Test
@@ -82,8 +81,8 @@ class UrinalsTest {
 
     private static List<String> ruleFilesList() {
         File folder = new File(".");
-        return Arrays.stream(folder.listFiles()).map(file -> file.getName())
-                .filter(name -> name.matches("rule.*.txt")).sorted().collect(Collectors.toList());
+        return Arrays.stream(folder.listFiles()).map(File::getName)
+                .filter(name -> name.matches("rule.*.txt")).sorted().toList();
     }
 
     private static void deleteRuleFiles() {
@@ -110,5 +109,14 @@ class UrinalsTest {
         expectedFile = new File("rule2.txt");
         Urinals.writeFile(values);
         Assertions.assertTrue(expectedFile.exists());
+    }
+
+    @Test
+    void testPerformReadsInputFileAndWritesCountToOutputFile() throws InvalidFileException, IOException {
+        System.out.println("====== Hariraj Venkatesan == TEST ELEVEN EXECUTED =======");
+        int oldCount = ruleFilesList().size();
+        Urinals.perform();
+        int newCount = ruleFilesList().size();
+        Assertions.assertEquals(oldCount+1, newCount);
     }
 }
