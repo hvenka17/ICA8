@@ -107,5 +107,8 @@ class UrinalsTest {
         File expectedFile = new File("rule1.txt");
         Urinals.writeFile(values);
         Assertions.assertTrue(expectedFile.exists());
+        expectedFile = new File("rule2.txt");
+        Urinals.writeFile(values);
+        Assertions.assertTrue(expectedFile.exists());
     }
 }
